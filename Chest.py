@@ -6,8 +6,6 @@ map=(["", "", "", "", ""],
      ["", "", "", "", ""],
      ["", "", "", "", ""])
 
-count = 0
-
 def map_print(map):
     i = 0
     while i<5: #map print
@@ -41,7 +39,8 @@ def com_move(map):
             player_round = False
     map_print(map)
 
-def win_chack_COM(map, turn, count, win):
+def win_chack_COM(map, turn):
+    count = 0
     length = 0
     width = 0
     x = 0
@@ -52,12 +51,14 @@ def win_chack_COM(map, turn, count, win):
                 count = count + 1
                 turn = False
                 return(count)
+           
     for x in range(0, 4):
         for y in range(0, 4):
             if map[length+y][width] == "C" and map[length][width+x] == "C":
                 count = count + 1
                 turn = False
                 return(count)
+            
     while x and y < 5:#left to right slop check
         if map[length+y][width] == "C" and map[length][width+x] == "C":
             count = count + 1
@@ -66,6 +67,7 @@ def win_chack_COM(map, turn, count, win):
         else:
             x = x + 1
             y = y + 1
+        
     #rlcheck:bool = True
     x = 4
     y = 0
@@ -78,6 +80,7 @@ def win_chack_COM(map, turn, count, win):
         else:
             x = x - 1
             y = y + 1
+        
     if win:
         print("com win!")
 
@@ -89,7 +92,8 @@ def check_count(count):
     else:
         count = 0
 
-def win_chack_player(map, turn, count, win):
+def win_chack_player(map, turn):
+    count = 0
     length = 0
     width = 0
     x = 0
@@ -100,12 +104,14 @@ def win_chack_player(map, turn, count, win):
                 count = count + 1
                 turn = False
                 return(count)
+           
     for x in range(0, 4):
         for y in range(0, 4):
             if map[length+y][width] == "P" and map[length][width+x] == "P":
                 count = count + 1
                 turn = False
                 return(count)
+             
     while x and y < 5:#left to right slop check
         if map[length+y][width] == "P" and map[length][width+x] == "P":
             count = count + 1
@@ -114,6 +120,7 @@ def win_chack_player(map, turn, count, win):
         else:
             x = x + 1
             y = y + 1
+
     #rlcheck:bool = True
     x = 4
     y = 0
@@ -150,5 +157,8 @@ while turn:
    else:
        print("COM turn")
        com_move(map)
-   win_chack_player(map, turn, count, win)
-   win_chack_COM(map, turn, count, win)
+   
+   count = win_chack_player(map, turn)
+   win = check_count(count)
+   count = win_chack_COM(map, turn)
+   win = check_count(count)
