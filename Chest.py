@@ -39,7 +39,7 @@ def com_move(map):
             player_round = False
     map_print(map)
 
-def win_chack_COM(map, turn):
+def win_chack_COM(map, turn):#bug it cannot really found the C
     count = 0
     length = 0
     width = 0
@@ -92,7 +92,7 @@ def check_count(count):
     else:
         count = 0
 
-def win_chack_player(map, turn):
+def win_chack_player(map, turn):#bug:In check time,the loop will stop in loop 1
     count = 0
     length = 0
     width = 0
