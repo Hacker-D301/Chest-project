@@ -17,14 +17,12 @@ def win_chack_COM(map):#bug it cannot really found the C
             if map[length+x][width] == "C" and map[length][width+y] == "C":
                 count = count + 1
                 return(count)
-            print("found")
            
     for x in range(0, 4):
         for y in range(0, 4):
             if map[length+y][width] == "C" and map[length][width+x] == "C":
                 count = count + 1
                 return(count)
-            print("found")
             
     while x and y < 5:#left to right slop check
         if map[length+y][width] == "C" and map[length][width+x] == "C":
@@ -33,7 +31,6 @@ def win_chack_COM(map):#bug it cannot really found the C
         else:
             x = x + 1
             y = y + 1
-        print("found")
     #rlcheck:bool = True
     x = 4
     y = 0
@@ -45,7 +42,6 @@ def win_chack_COM(map):#bug it cannot really found the C
         else:
             x = x - 1
             y = y + 1
-        print("found")
     #if win:
         #print("com win!")
 
@@ -99,5 +95,10 @@ def win_chack_player(map):#bug:In check time,the loop will stop in loop 1
 
 #count = win_chack_player(map)
 #win = check_count(count)
-count = win_chack_COM(map)
+#count = win_chack_COM(map)
 #win = check_count(count)
+#print(count)
+
+length = int(input("length"))
+width = int(input("width"))
+print(map[length][width])

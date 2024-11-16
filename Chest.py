@@ -31,8 +31,8 @@ def com_move(map):
     width = 0
     player_round: bool = True
     while player_round:
-        length = random.randint(0, 4)
-        width = random.randint(0, 4)
+        length = random.randint(0, 5)
+        width = random.randint(0, 5)
         check: bool = True
         if map[length-1][width-1] != "P":
             map[length-1][width-1] = "C"
@@ -45,28 +45,34 @@ def win_chack_COM(map, turn):#bug it cannot really found the C
     width = 0
     x = 0
     y = 0
-    for x in range(0, 4):
-        for y in range(0, 4):
+    while x < 5:
+        while y < 5:
             if map[length+x][width] == "C" and map[length][width+y] == "C":
                 count = count + 1
                 turn = False
-                return(count)
+            else:
+                y = y + 1
+        x = x + 1
+    return(count)
            
-    for x in range(0, 4):
-        for y in range(0, 4):
+    while x < 5:
+        while y < 5:
             if map[length+y][width] == "C" and map[length][width+x] == "C":
                 count = count + 1
                 turn = False
-                return(count)
+            else:
+                y = y + 1
+        x = x + 1
+    return(count)
             
     while x and y < 5:#left to right slop check
         if map[length+y][width] == "C" and map[length][width+x] == "C":
             count = count + 1
             turn = False
-            return(count)
         else:
             x = x + 1
             y = y + 1
+    return(count)
         
     #rlcheck:bool = True
     x = 4
@@ -76,10 +82,10 @@ def win_chack_COM(map, turn):#bug it cannot really found the C
             count = count + 1
             #rlcheck = False
             turn = False
-            return(count)
         else:
             x = x - 1
             y = y + 1
+    return(count)
         
     if win:
         print("com win!")
@@ -88,9 +94,9 @@ def check_count(count):
     win:bool = False
     if count == 5:
         win = True
-        return(win)
     else:
         count = 0
+    return(win)
 
 def win_chack_player(map, turn):#bug:In check time,the loop will stop in loop 1
     count = 0
@@ -98,30 +104,35 @@ def win_chack_player(map, turn):#bug:In check time,the loop will stop in loop 1
     width = 0
     x = 0
     y = 0
-    for x in range(0, 4):
-        for y in range(0, 4):
+    while x < 5:
+        while y < 5:
             if map[length+x][width] == "P" and map[length][width+y] == "P":
                 count = count + 1
                 turn = False
-                return(count)
+            else:
+                y = y + 1
+        x = x + 1
+    return(count)
            
-    for x in range(0, 4):
-        for y in range(0, 4):
+    while x < 5:
+        while y < 5:
             if map[length+y][width] == "P" and map[length][width+x] == "P":
                 count = count + 1
                 turn = False
-                return(count)
+            else:
+                y = y + 1
+        x = x + 1
+    return(count)
              
     while x and y < 5:#left to right slop check
         if map[length+y][width] == "P" and map[length][width+x] == "P":
             count = count + 1
             turn = False
-            return(count)
         else:
             x = x + 1
             y = y + 1
+    return(count)
 
-    #rlcheck:bool = True
     x = 4
     y = 0
     while x and y < 5:#right to left slop check
@@ -129,10 +140,10 @@ def win_chack_player(map, turn):#bug:In check time,the loop will stop in loop 1
             count = count + 1
             #rlcheck = False
             turn = False
-            return(count)
         else:
             x = x - 1
             y = y + 1
+    return(count)
     if win:
         print("player win!")
     
