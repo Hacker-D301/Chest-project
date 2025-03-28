@@ -1,0 +1,20 @@
+lnear hashing
+1.key generate(x%10)
+2.list(8)
+3.put data in list (8>8)
+4.solve if the data not have place
+
+key = data[i]%10
+data[i] = [11, 22, 33, 44, 55, 66, 81]selected
+area[key] = place input data(key)
+----------------------------------------------------------------------
+same loop run in (if data[i] = area[key]) = same = true
+----------------------------------------------------------------------
+judge if number in area have number already
+
+1: check and count front of origin(have data)
+2: data[i] + count = new_area[key]
+
+hashing:
+    if 
+    data[i](target) = origin + x

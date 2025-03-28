@@ -1,0 +1,43 @@
+import random
+
+n = int(input("The size of the square"))
+
+map = [["" for _ in range(n)] for _ in range(n)]
+def print_map(map):
+    for i in range(0, n):
+        print(map[i])    
+
+print_map(map)
+print("-------------------")
+
+for i in range(0, n):
+    for j in range(0, n):
+        inp_n = random.randint(0, 100)
+        map[i][j] = inp_n
+    inp_n = 0
+  
+print_map(map)
+print("-------------------")
+
+area = 0
+count = 0
+while area<n:
+    count = 0
+    for i in range(area, n):
+        count += map[area][i]
+    for i in range(area+1,n):
+        count += map[i][area]
+    map[area][area] = count
+    area += 1
+    print_map(map)
+    print(count)
+    print("-------------------")
+
+area = 0
+
+for i in range(0, n):
+    for j in range(0, n):
+        if map[i][j] != map[area][area]:
+            map[i][j] = 0
+    area += 1
+    print_map(map)
